@@ -19,6 +19,13 @@ xcodebuild -project frontend-ios/Demo/ShellDemo.xcodeproj -scheme ShellDemo \
 
 `ShellDemo` is also an executable package target for previews on the Mac. The Xcode app target is `ShellDemoApp`.
 
+The generated project also contains `ShellDemoVision`, a standard windowed visionOS target. Build it with:
+
+```sh
+xcodebuild -project frontend-ios/Demo/ShellDemo.xcodeproj -scheme ShellDemoVision \
+  -destination 'generic/platform=visionOS Simulator' -derivedDataPath /tmp/shell-demo-vision build
+```
+
 The app icon of the demo app and of the shell app (`dm/ios/project-shell.yml`) is `frontend-ios/AppIcon.icon`. It is edited in Icon Composer.
 
 ## Integrate
