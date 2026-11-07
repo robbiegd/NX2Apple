@@ -100,7 +100,7 @@ struct SideBarProbe: View {
     let report: (SideBar) -> Void
     var body: some View {
         #if canImport(SwiftUI, _version: 8.1)
-        if #available(iOS 27.1, macOS 27.1, *) { SideBarReader(report: report) } else { Color.clear }
+        if #available(iOS 27.1, macOS 27.1, visionOS 27.2, *) { SideBarReader(report: report) } else { Color.clear }
         #else
         Color.clear
         #endif
@@ -108,7 +108,7 @@ struct SideBarProbe: View {
 }
 
 #if canImport(SwiftUI, _version: 8.1)
-@available(iOS 27.1, macOS 27.1, *)
+@available(iOS 27.1, macOS 27.1, visionOS 27.2, *)
 private struct SideBarReader: View {
     let report: (SideBar) -> Void
     @Environment(\.toolbarVerticalEdge) private var edge

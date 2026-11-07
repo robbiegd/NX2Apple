@@ -353,7 +353,11 @@ private struct FlowTilt: ViewModifier {
         let near = max(-1, min(1, place))
         let far = place > 1 ? place - 1 : place < -1 ? place + 1 : 0
         content
+            #if os(visionOS)
+            .rotation3DEffect(.degrees(flat ? 0 : -near * 24), axis: (x: 0, y: 1, z: 0))
+            #else
             .rotation3DEffect(.degrees(flat ? 0 : -near * 24), axis: (x: 0, y: 1, z: 0), perspective: 0.35)
+            #endif
             .scaleEffect(1 - abs(near) * 0.22)
             .offset(x: -near * cover * 0.28 - far * cover * 0.55)
             .brightness(-abs(near) * 0.25 - min(abs(far), 1) * 0.1)
